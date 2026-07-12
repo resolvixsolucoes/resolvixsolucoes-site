@@ -3,6 +3,7 @@ import { Hero } from "./components/Hero";
 import { ProblemSection } from "./components/ProblemSection";
 import { MethodSection } from "./components/MethodSection";
 import { ServicesSection } from "./components/ServicesSection";
+import { TransparencySection } from "./components/TransparencySection";
 
 export default function HomePage() {
   return (
@@ -13,6 +14,7 @@ export default function HomePage() {
         <ProblemSection />
         <ServicesSection />
         <MethodSection />
+        <TransparencySection />
       </main>
     </>
   );
