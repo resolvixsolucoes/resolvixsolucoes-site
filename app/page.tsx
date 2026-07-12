@@ -1,6 +1,7 @@
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import { ProblemSection } from "./components/ProblemSection";
+import { ContactSection } from "./components/ContactSection";
 import { MethodSection } from "./components/MethodSection";
 import { PilotSection } from "./components/PilotSection";
 import { ServicesSection } from "./components/ServicesSection";
@@ -17,6 +18,7 @@ export default function HomePage() {
         <MethodSection />
         <TransparencySection />
         <PilotSection />
+        <ContactSection />
       </main>
     </>
   );
