@@ -1,7 +1,13 @@
+import { Header } from "./components/Header";
+import { Hero } from "./components/Hero";
+
 export default function HomePage() {
   return (
-    <main className="flex flex-1 items-center justify-center p-8">
-      <p className="text-sm text-neutral-500">Em construção.</p>
-    </main>
+    <>
+      <Header />
+      <main className="flex-1">
+        <Hero />
+      </main>
+    </>
   );
 }
