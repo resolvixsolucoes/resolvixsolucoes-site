@@ -75,9 +75,7 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  icons: {
-    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
-  },
+  // O favicon vem de app/icon.png e app/apple-icon.png (convenção do Next).
 };
 
 export const viewport: Viewport = {

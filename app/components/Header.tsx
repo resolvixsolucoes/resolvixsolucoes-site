@@ -17,7 +17,7 @@ export function Header() {
           className="flex items-center gap-3 focus-visible:outline-none"
           aria-label={`${site.name} — página inicial`}
         >
-          <BrandSymbol size={48} />
+          <BrandSymbol height={40} priority />
           <span className="hidden font-title text-lg font-bold tracking-tight sm:inline">
             {site.name}
           </span>

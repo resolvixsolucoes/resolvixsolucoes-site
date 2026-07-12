@@ -63,7 +63,7 @@ export default function LinksPage() {
             aria-label={`${site.name} — página inicial`}
             className="focus-visible:outline-none"
           >
-            <BrandSymbol size={64} />
+            <BrandSymbol height={64} />
           </Link>
           <h1 className="mt-5 font-title text-2xl font-bold tracking-tight text-azul">
             {site.name}

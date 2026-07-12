@@ -16,7 +16,7 @@ export function Footer() {
         <div className="flex flex-col gap-10 sm:flex-row sm:items-start sm:justify-between">
           <div className="max-w-md">
             <div className="flex items-center gap-3">
-              <BrandSymbol size={48} />
+              <BrandSymbol height={40} />
               <span className="font-title text-lg font-bold tracking-tight">
                 {site.name}
               </span>

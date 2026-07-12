@@ -1,3 +1,5 @@
+import fs from "node:fs";
+import path from "node:path";
 import { ImageResponse } from "next/og";
 import { site } from "@/lib/config";
 
@@ -7,12 +9,17 @@ export const alt = `${site.name} — ${site.tagline}`;
 
 /**
  * Card de compartilhamento social (WhatsApp, LinkedIn, Twitter).
- * Fundo azul chapado; gradiente aparece só dentro do símbolo, conforme
- * Brand Book v2.0. Satori exige display:flex em qualquer div com múltiplos
- * filhos — os divs abaixo respeitam essa regra e strings interpoladas são
- * empacotadas com template literal para virarem um filho único.
+ * Fundo azul chapado; símbolo é o PNG oficial da marca (transparente).
+ * Satori exige display:flex em qualquer div com múltiplos filhos e não
+ * consegue baixar fallback pra U+2713, então o ✓ da tagline vira SVG
+ * inline com stroke verde.
  */
 export default async function OpenGraphImage() {
+  const symbolBuffer = fs.readFileSync(
+    path.join(process.cwd(), "public/brand/simbolo.png"),
+  );
+  const symbolDataUri = `data:image/png;base64,${symbolBuffer.toString("base64")}`;
+
   const bottomLine = `Sites - Sistemas - Automacoes - ${site.city}-${site.state}`;
 
   return new ImageResponse(
@@ -30,37 +37,15 @@ export default async function OpenGraphImage() {
       }}
     >
       <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="120"
-          height="120"
-          viewBox="0 0 64 64"
-        >
-          <defs>
-            <linearGradient
-              id="og"
-              x1="0"
-              y1="0"
-              x2="64"
-              y2="64"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop offset="0%" stopColor="#1B2B4C" />
-              <stop offset="52%" stopColor="#3AA5C4" />
-              <stop offset="100%" stopColor="#00C896" />
-            </linearGradient>
-          </defs>
-          <rect width="64" height="64" rx="14" fill="url(#og)" />
-          <path
-            d="M16 34 L26 44 L48 20"
-            stroke="#FFFFFF"
-            strokeWidth="7"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            fill="none"
-          />
-        </svg>
-        <div style={{ fontSize: 44, fontWeight: 700, letterSpacing: "-0.02em" }}>
+        {/* biome-ignore lint/performance/noImgElement: satori only supports <img> */}
+        <img
+          src={symbolDataUri}
+          alt=""
+          width={180}
+          height={110}
+          style={{ display: "block" }}
+        />
+        <div style={{ fontSize: 48, fontWeight: 700, letterSpacing: "-0.02em" }}>
           {site.name}
         </div>
       </div>
@@ -71,7 +56,7 @@ export default async function OpenGraphImage() {
             display: "flex",
             alignItems: "center",
             gap: "20px",
-            fontSize: 96,
+            fontSize: 104,
             fontWeight: 700,
             lineHeight: 1.05,
             letterSpacing: "-0.03em",
@@ -80,8 +65,8 @@ export default async function OpenGraphImage() {
           <div style={{ display: "flex" }}>Do X ao</div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="96"
-            height="96"
+            width="104"
+            height="104"
             viewBox="0 0 64 64"
           >
             <path

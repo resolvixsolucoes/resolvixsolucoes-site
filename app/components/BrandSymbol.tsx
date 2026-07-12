@@ -1,60 +1,44 @@
+import Image from "next/image";
+
 /**
- * Símbolo Resolvix — quadrado arredondado com gradiente exclusivo do símbolo
- * e checkmark branco. Sem sombra, brilho ou contorno (Brand Book v2.0).
+ * Símbolo Resolvix — X + ✓ fundidos.
  *
- * Uso: BrandSymbol isolado no header (mínimo 48px), no footer e como
- * separador visual. É a única superfície onde o gradiente aparece.
+ * Fonte: public/brand/simbolo.png (PNG transparente, recortado do
+ * logo-principal-sem-fundo.png fornecido pela marca).
+ *
+ * A proporção nativa é 472×290 (≈1.63:1 wide). A prop `height` define
+ * a altura visível; a largura é calculada pra manter a proporção. Isso
+ * evita distorção quando o mesmo símbolo é usado em contextos distintos
+ * (header 40px, footer 40px, /links 56px).
  */
 
+const NATIVE_W = 472;
+const NATIVE_H = 290;
+
 type Props = {
-  size?: number;
+  height?: number;
   className?: string;
   title?: string;
+  priority?: boolean;
 };
 
 export function BrandSymbol({
-  size = 48,
+  height = 40,
   className,
   title = "Resolvix Soluções",
+  priority = false,
 }: Props) {
-  // Cada instância precisa de um id único para o gradiente não colidir
-  // quando dois símbolos coexistem no mesmo documento.
-  const gradientId = `resolvix-symbol-gradient-${size}`;
+  const width = Math.round((NATIVE_W / NATIVE_H) * height);
 
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 64 64"
-      width={size}
-      height={size}
-      role="img"
-      aria-label={title}
+    <Image
+      src="/brand/simbolo.png"
+      alt={title}
+      width={width}
+      height={height}
       className={className}
-    >
-      <title>{title}</title>
-      <defs>
-        <linearGradient
-          id={gradientId}
-          x1="0"
-          y1="0"
-          x2="64"
-          y2="64"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop offset="0%" stopColor="#1B2B4C" />
-          <stop offset="52%" stopColor="#3AA5C4" />
-          <stop offset="100%" stopColor="#00C896" />
-        </linearGradient>
-      </defs>
-      <rect width="64" height="64" rx="14" fill={`url(#${gradientId})`} />
-      <path
-        d="M16 34 L26 44 L48 20"
-        stroke="#FFFFFF"
-        strokeWidth="7"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        fill="none"
-      />
-    </svg>
+      priority={priority}
+      sizes={`${width}px`}
+    />
   );
 }
