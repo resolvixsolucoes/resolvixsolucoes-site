@@ -3,6 +3,7 @@ import { Hero } from "./components/Hero";
 import { ProblemSection } from "./components/ProblemSection";
 import { ContactSection } from "./components/ContactSection";
 import { FaqSection } from "./components/FaqSection";
+import { FloatingWhatsApp } from "./components/FloatingWhatsApp";
 import { Footer } from "./components/Footer";
 import { MethodSection } from "./components/MethodSection";
 import { PilotSection } from "./components/PilotSection";
@@ -24,6 +25,7 @@ export default function HomePage() {
         <ContactSection />
       </main>
       <Footer />
+      <FloatingWhatsApp />
     </>
   );
 }

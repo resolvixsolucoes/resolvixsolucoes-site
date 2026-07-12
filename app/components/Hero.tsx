@@ -5,7 +5,7 @@ const heroMessage =
 
 export function Hero() {
   return (
-    <section className="relative bg-azul text-branco">
+    <section id="hero" className="relative bg-azul text-branco">
       <div className="mx-auto max-w-6xl px-6 py-24 sm:py-32 lg:py-40">
         <div className="max-w-3xl">
           <h1 className="font-title text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
