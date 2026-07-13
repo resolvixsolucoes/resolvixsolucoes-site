@@ -132,15 +132,62 @@ NEXT_PUBLIC_PLAUSIBLE_DOMAIN=resolvixsolucoes.com.br
 
 ---
 
-## Deploy
+## Deploy — Hostinger
 
-Configurado para Vercel (SSG puro, zero-config). Qualquer host que sirva
-arquivos estáticos funciona depois de `next build`.
+O projeto está configurado como **static export** (`next.config.ts` →
+`output: 'export'`). O `next build` produz uma pasta `out/` com HTML,
+CSS, JS e assets prontos pra subir em qualquer hospedagem Apache /
+LiteSpeed, incluindo os planos compartilhados da Hostinger sem Node.
+
+### Build
 
 ```sh
 npm run build
-# saída: .next/ (Vercel/Netlify) ou next export (host estático)
+# saída: ./out — todo o site estático
 ```
+
+### O que subir
+
+O conteúdo de **`out/`** (não a pasta `out` em si) vai para a raiz do
+diretório público da Hostinger — geralmente `public_html/`. Inclui
+automaticamente um `.htaccess` (originalmente em `public/.htaccess`)
+que:
+
+- Força `Content-Type: image/png` no `/opengraph-image` (sem essa
+  regra, o WhatsApp / LinkedIn / Twitter ignoram o card social).
+- Redireciona HTTP → HTTPS.
+- Serve `404.html` como página de erro.
+- Cache imutável nos assets do Next (que têm hash no nome) e cache
+  curto no HTML pra propagar mudanças rápido.
+- Compressão gzip e headers de segurança.
+
+### Passo a passo (hPanel / File Manager)
+
+1. Roda `npm run build` local.
+2. Zipa a pasta `out/` (só o conteúdo, não a pasta) → `deploy.zip`.
+3. No hPanel → **Files → File Manager** → entra em `public_html/`.
+4. Limpa o `public_html/` (se tiver instalação anterior).
+5. Faz upload do `deploy.zip` e usa **Extract** direto no File Manager.
+6. Confere se o `.htaccess` chegou (às vezes File Manager esconde
+   arquivos que começam com `.` — habilita "Show Hidden Files").
+
+### Passo a passo (FTP)
+
+```sh
+# depois do npm run build:
+cd out
+# usar FileZilla, WinSCP ou lftp para subir tudo para public_html/
+lftp -u USUARIO,SENHA ftp.resolvixsolucoes.com.br \
+  -e "mirror -R . public_html/ --delete; quit"
+```
+
+### Configuração antes do deploy
+
+- `NEXT_PUBLIC_PLAUSIBLE_DOMAIN=resolvixsolucoes.com.br` — em `.env`
+  local ou como variável de build. Sem essa env, o Plausible não
+  carrega (não quebra nada, só não mede).
+- Domínio `resolvixsolucoes.com.br` já apontando na Hostinger e com
+  SSL ativo (Free Let's Encrypt do hPanel resolve).
 
 ---
 

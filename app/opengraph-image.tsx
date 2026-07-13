@@ -7,6 +7,10 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 export const alt = `${site.name} — ${site.tagline}`;
 
+// Necessário quando next.config tem output: 'export' — força pré-render
+// estático da rota em build time, sem runtime dinâmico.
+export const dynamic = "force-static";
+
 /**
  * Card de compartilhamento social (WhatsApp, LinkedIn, Twitter).
  * Fundo azul chapado; símbolo é o PNG oficial da marca (transparente).
