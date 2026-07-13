@@ -55,24 +55,35 @@ export function TransparencySection() {
         <div className="mt-14 grid gap-6 md:grid-cols-3">
           <article className="rounded-xl border border-branco/10 bg-branco/[0.04] p-8">
             <span className="font-mono text-xs uppercase tracking-widest text-verde">
-              Projeto próprio
+              Case em produção
             </span>
             <h3 className="mt-3 font-title text-xl font-semibold">
-              Calculadora de precificação 3D
+              Plataforma de gestão para igrejas
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-branco/80">
-              Ferramenta real, feita para resolver um problema real: precificar
-              impressões 3D considerando material, tempo, energia e margem.
-              Código aberto no GitHub.
+              Extraída de código em produção. Gestão de membros, ministérios,
+              financeiro, LMS de cursos, check-in por QR e bot WhatsApp para
+              visitantes. PWA offline-friendly, controle de acesso granular
+              por permissão.
             </p>
-            <a
-              href={social.github.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-5 inline-flex items-center gap-2 font-mono text-sm text-verde hover:underline"
-            >
-              Ver no GitHub →
-            </a>
+            <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-sm">
+              <a
+                href="https://github.com/resolvixsolucoes/igreja-base"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-verde hover:underline"
+              >
+                Ver código →
+              </a>
+              <a
+                href="https://igreja-base.vercel.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-verde hover:underline"
+              >
+                Testar demo →
+              </a>
+            </div>
           </article>
 
           <article className="rounded-xl border border-branco/10 bg-branco/[0.04] p-8">
