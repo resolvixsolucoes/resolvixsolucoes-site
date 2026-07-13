@@ -127,14 +127,8 @@ export function MethodSection() {
             >
               <article
                 role="listitem"
-                className="relative flex flex-1 flex-col overflow-hidden rounded-xl bg-branco p-6"
+                className="flex flex-1 flex-col rounded-xl bg-branco p-6"
               >
-                <span
-                  aria-hidden="true"
-                  className="pointer-events-none absolute right-3 top-1 font-title text-6xl font-bold leading-none text-azul/[0.06]"
-                >
-                  {String(index + 1).padStart(2, "0")}
-                </span>
                 <span className="font-mono text-[10px] uppercase tracking-widest text-verde">
                   Etapa {index + 1}
                 </span>

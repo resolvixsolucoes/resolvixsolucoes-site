@@ -22,15 +22,12 @@ export function ProblemSection() {
         </h2>
 
         <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {problems.map((problem, index) => (
+          {problems.map((problem) => (
             <article
               key={problem.title}
               className="flex flex-col rounded-xl bg-branco p-8 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_4px_16px_rgba(31,41,55,0.04)]"
             >
-              <span className="font-mono text-sm text-verde">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <h3 className="mt-3 font-title text-xl font-semibold text-azul">
+              <h3 className="font-title text-xl font-semibold text-azul">
                 {problem.title}
               </h3>
               <p className="mt-3 text-base leading-relaxed text-cinza-900/85">
