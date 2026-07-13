@@ -6,19 +6,19 @@ const heroMessage =
 export function Hero() {
   return (
     <section id="hero" className="relative bg-azul text-branco">
-      <div className="mx-auto max-w-6xl px-6 py-24 sm:py-32 lg:py-40">
+      <div className="mx-auto max-w-6xl px-6 py-16 sm:py-20 lg:py-24">
         <div className="max-w-3xl">
           <h1 className="font-title text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
             Do X ao <span className="text-verde">✓</span>.<br />
             Simples assim.
           </h1>
 
-          <p className="mt-6 max-w-2xl text-lg text-branco/85 sm:text-xl">
+          <p className="mt-5 max-w-2xl text-lg text-branco/85 sm:text-xl">
             Sites, sistemas web e automações sob medida para micro e pequenas
             empresas e profissionais liberais de {site.city} e do {site.region}.
           </p>
 
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4">
             <a
               href={whatsappUrl(heroMessage)}
               target="_blank"
@@ -36,6 +36,9 @@ export function Hero() {
           </div>
         </div>
       </div>
+      {/* Faixa verde de assinatura — bookend visual do bloco escuro
+          (mesmo padrão dos banners de marca). */}
+      <div aria-hidden="true" className="h-1.5 w-full bg-verde" />
     </section>
   );
 }

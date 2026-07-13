@@ -12,8 +12,8 @@ export function Footer() {
 
   return (
     <footer className="bg-azul text-branco">
-      <div className="mx-auto max-w-6xl px-6 py-14">
-        <div className="flex flex-col gap-10 sm:flex-row sm:items-start sm:justify-between">
+      <div className="mx-auto max-w-6xl px-6 py-10">
+        <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
           <div className="max-w-md">
             <div className="flex items-center gap-3">
               <BrandSymbol height={40} />
@@ -44,7 +44,7 @@ export function Footer() {
           </nav>
         </div>
 
-        <div className="mt-12 flex flex-col gap-3 border-t border-branco/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-8 flex flex-col gap-3 border-t border-branco/10 pt-5 sm:flex-row sm:items-center sm:justify-between">
           <p className="font-title text-sm font-semibold text-branco">
             Do X ao <span className="text-verde">✓</span>. Simples assim.
           </p>
@@ -53,6 +53,9 @@ export function Footer() {
           </p>
         </div>
       </div>
+      {/* Faixa verde de assinatura — mesma linha do hero, fechando o
+          bloco escuro do rodapé como no banner de marca. */}
+      <div aria-hidden="true" className="h-1.5 w-full bg-verde" />
     </footer>
   );
 }
