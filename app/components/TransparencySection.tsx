@@ -110,7 +110,7 @@ export function TransparencySection() {
               comporta.
             </p>
             <a
-              href="https://github.com/resolvixsolucoes/site"
+              href="https://github.com/resolvixsolucoes/resolvixsolucoes-site"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-5 inline-flex items-center gap-2 font-mono text-sm text-verde hover:underline"
