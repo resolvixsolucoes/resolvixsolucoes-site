@@ -1,6 +1,26 @@
+import type { IconType } from "react-icons";
+import {
+  SiJavascript,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiPostgresql,
+  SiReact,
+  SiSupabase,
+  SiTailwindcss,
+  SiTypescript,
+} from "react-icons/si";
 import { social } from "@/lib/config";
 
-const stack = ["TypeScript", "Node.js", "React", "Next.js"];
+const stack: Array<{ name: string; Icon: IconType; color: string }> = [
+  { name: "TypeScript", Icon: SiTypescript, color: "#3178C6" },
+  { name: "JavaScript", Icon: SiJavascript, color: "#F7DF1E" },
+  { name: "React", Icon: SiReact, color: "#61DAFB" },
+  { name: "Next.js", Icon: SiNextdotjs, color: "#FFFFFF" },
+  { name: "Tailwind CSS", Icon: SiTailwindcss, color: "#06B6D4" },
+  { name: "Node.js", Icon: SiNodedotjs, color: "#339933" },
+  { name: "Supabase", Icon: SiSupabase, color: "#3ECF8E" },
+  { name: "PostgreSQL", Icon: SiPostgresql, color: "#4169E1" },
+];
 
 export function TransparencySection() {
   return (
@@ -95,15 +115,21 @@ export function TransparencySection() {
               As ferramentas do dia a dia
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-branco/80">
-              Sem lista inflada. Só o que uso de verdade em projeto de cliente.
+              O que uso de verdade em projeto de cliente — escolho a stack
+              pelo problema, não pela moda.
             </p>
             <ul className="mt-5 flex flex-wrap gap-2">
               {stack.map((tech) => (
                 <li
-                  key={tech}
-                  className="rounded-md border border-branco/15 bg-azul-hover/60 px-2.5 py-1 font-mono text-xs text-branco/90"
+                  key={tech.name}
+                  className="flex items-center gap-1.5 rounded-md border border-branco/15 bg-azul-hover/60 px-2.5 py-1 font-mono text-xs text-branco/90"
                 >
-                  {tech}
+                  <tech.Icon
+                    aria-hidden="true"
+                    className="h-3.5 w-3.5 shrink-0"
+                    style={{ color: tech.color }}
+                  />
+                  {tech.name}
                 </li>
               ))}
             </ul>
