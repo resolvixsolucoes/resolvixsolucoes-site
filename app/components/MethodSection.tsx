@@ -94,9 +94,17 @@ export function MethodSection() {
         </div>
 
         {/* Fluxo: [X] → 01 → 02 → 03 → 04 → [✓]. Horizontal no desktop,
-            vertical no mobile — a seta conectora rotaciona 90° via CSS. */}
-        <div className="mt-14 flex flex-col items-stretch gap-4 lg:flex-row lg:items-center lg:gap-3">
-          <div className="flex flex-col items-center gap-2 lg:shrink-0">
+            vertical no mobile — a seta conectora rotaciona 90° via CSS.
+            Estrutura chapada (sem ol/li aninhado) pra todos os 4 cards
+            serem irmãos diretos e receberem `flex-1` igual, garantindo
+            mesma largura E mesma altura. Semântica preservada com
+            role="list"/role="listitem". */}
+        <div
+          role="list"
+          aria-label="Etapas do método"
+          className="mt-14 flex flex-col items-stretch gap-4 lg:flex-row lg:items-stretch lg:gap-3"
+        >
+          <div className="flex flex-col items-center gap-2 lg:shrink-0 lg:self-center">
             <div className="flex h-16 w-16 items-center justify-center rounded-full bg-branco text-cinza-500 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
               <XMark className="h-8 w-8" />
             </div>
@@ -108,55 +116,45 @@ export function MethodSection() {
           <div className="flex justify-center lg:hidden">
             <Arrow direction="down" />
           </div>
-          <div className="hidden lg:flex">
+          <div className="hidden lg:flex lg:self-center">
             <Arrow direction="right" />
           </div>
 
-          <ol className="flex flex-1 flex-col gap-4 lg:flex-row lg:items-center lg:gap-3">
-            {steps.map((step, index) => (
-              <li
-                key={step.title}
-                className="flex flex-1 flex-col gap-4 lg:flex-row lg:items-center lg:gap-3"
+          {steps.map((step, index) => (
+            <div
+              key={step.title}
+              className="contents"
+            >
+              <article
+                role="listitem"
+                className="relative flex flex-1 flex-col overflow-hidden rounded-xl bg-branco p-6"
               >
-                <article className="relative flex-1 overflow-hidden rounded-xl bg-branco p-6">
-                  <span
-                    aria-hidden="true"
-                    className="pointer-events-none absolute right-3 top-1 font-title text-6xl font-bold leading-none text-azul/[0.06]"
-                  >
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <span className="font-mono text-[10px] uppercase tracking-widest text-verde">
-                    Etapa {index + 1}
-                  </span>
-                  <h3 className="mt-2 font-title text-base font-semibold text-azul">
-                    {step.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-cinza-900/85">
-                    {step.body}
-                  </p>
-                </article>
-                {index < steps.length - 1 && (
-                  <>
-                    <div className="flex justify-center lg:hidden">
-                      <Arrow direction="down" />
-                    </div>
-                    <div className="hidden lg:flex">
-                      <Arrow direction="right" />
-                    </div>
-                  </>
-                )}
-              </li>
-            ))}
-          </ol>
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute right-3 top-1 font-title text-6xl font-bold leading-none text-azul/[0.06]"
+                >
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <span className="font-mono text-[10px] uppercase tracking-widest text-verde">
+                  Etapa {index + 1}
+                </span>
+                <h3 className="mt-2 font-title text-base font-semibold text-azul">
+                  {step.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-cinza-900/85">
+                  {step.body}
+                </p>
+              </article>
+              <div className="flex justify-center lg:hidden">
+                <Arrow direction="down" />
+              </div>
+              <div className="hidden lg:flex lg:self-center">
+                <Arrow direction="right" />
+              </div>
+            </div>
+          ))}
 
-          <div className="flex justify-center lg:hidden">
-            <Arrow direction="down" />
-          </div>
-          <div className="hidden lg:flex">
-            <Arrow direction="right" />
-          </div>
-
-          <div className="flex flex-col items-center gap-2 lg:shrink-0">
+          <div className="flex flex-col items-center gap-2 lg:shrink-0 lg:self-center">
             <div className="flex h-16 w-16 items-center justify-center rounded-full bg-verde text-branco shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
               <CheckMark className="h-8 w-8" />
             </div>
