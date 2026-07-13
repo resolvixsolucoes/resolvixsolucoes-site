@@ -23,8 +23,7 @@ export const site = {
 
 export const contact = {
   email: "contato@resolvixsolucoes.com.br",
-  // TODO: trocar pelo número real (formato E.164 sem "+"). Placeholder abaixo.
-  whatsappNumber: "5531999999999",
+  whatsappNumber: "5531991437500",
 } as const;
 
 export const social = {
