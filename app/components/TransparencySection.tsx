@@ -55,16 +55,17 @@ export function TransparencySection() {
         <div className="mt-14 grid gap-6 md:grid-cols-3">
           <article className="rounded-xl border border-branco/10 bg-branco/[0.04] p-8">
             <span className="font-mono text-xs uppercase tracking-widest text-verde">
-              Case em produção
+              Base pública
             </span>
             <h3 className="mt-3 font-title text-xl font-semibold">
               Plataforma de gestão para igrejas
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-branco/80">
-              Extraída de código em produção. Gestão de membros, ministérios,
-              financeiro, LMS de cursos, check-in por QR e bot WhatsApp para
-              visitantes. PWA offline-friendly, controle de acesso granular
-              por permissão.
+              Extraída de plataforma em uso numa igreja no Vale do Aço.
+              Gestão de membros, ministérios, financeiro, LMS de cursos,
+              check-in por QR e bot WhatsApp para visitantes. PWA
+              offline-friendly, controle de acesso granular por permissão.
+              Publicada como semente pra outras igrejas usarem como base.
             </p>
             <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-sm">
               <a
